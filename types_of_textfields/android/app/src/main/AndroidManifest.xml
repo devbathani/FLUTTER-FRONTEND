@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.types_of_textfields">
    <application
-        android:label="types_of_textfields"
+        android:label="TextFields"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
