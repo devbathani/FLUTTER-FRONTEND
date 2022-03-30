@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:types_of_textfields/ui/widgets/textfield_1.dart';
 import 'package:types_of_textfields/ui/widgets/textfield_4.dart';
-
 import 'widgets/textfield_2.dart';
 import 'widgets/textfield_3.dart';
 
