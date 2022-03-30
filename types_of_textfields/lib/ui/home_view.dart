@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(221, 24, 23, 23),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +32,7 @@ class HomeView extends StatelessWidget {
                     "FLutter Frontend",
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                        color: Colors.black87,
+                        color: Colors.white,
                         fontSize: w / 22,
                         fontWeight: FontWeight.w500,
                       ),
@@ -45,7 +45,7 @@ class HomeView extends StatelessWidget {
                     "Hey there 👋",
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
-                        color: Colors.black87,
+                        color: Colors.white,
                         fontSize: w / 13,
                         fontWeight: FontWeight.w600,
                       ),
@@ -90,7 +90,7 @@ class HomeView extends StatelessWidget {
                   "Thank You 🙏",
                   style: GoogleFonts.poppins(
                     textStyle: TextStyle(
-                      color: Colors.black87,
+                      color: Colors.white,
                       fontSize: w / 20,
                       fontWeight: FontWeight.w500,
                     ),
