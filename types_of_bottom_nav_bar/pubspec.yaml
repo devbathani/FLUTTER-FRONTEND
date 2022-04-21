@@ -35,6 +35,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  get: ^4.6.1
+  google_fonts: ^2.3.1
+
+  #Bottom Navigation Bar dependencies
+  salomon_bottom_bar: ^3.3.0
+  animated_bottom_navigation_bar: ^0.3.2
+  flutter_snake_navigationbar: ^0.6.1
+  water_drop_nav_bar: ^2.1.0+8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

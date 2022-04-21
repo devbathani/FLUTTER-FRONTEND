@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.types_of_bottom_nav_bar">
    <application
-        android:label="types_of_bottom_nav_bar"
+        android:label="Bottom Navigation Bars"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
