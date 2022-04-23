@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.image_picker">
    <application
-        android:label="image_picker"
+        android:label="Image Picker"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

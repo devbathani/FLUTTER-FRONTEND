@@ -1,4 +1,4 @@
-name: image_picker
+name: image_pickers
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -35,6 +35,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  get: ^4.6.1
+  google_fonts: ^2.3.1
+  image_picker: ^0.8.4+5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
