@@ -9,13 +9,13 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final List<Color> color1 = [
-    const Color(0xffFFDEE9),
-    const Color(0xffB5FFFC),
+    const Color(0xffA9C9FF),
+    const Color(0xffFFBBEC),
   ];
 
   final List<Color> color2 = [
-    const Color(0xff08AEEA),
-    const Color(0xff2AF598),
+    const Color(0xff9FACE6),
+    const Color(0xff74EBD5),
   ];
 
   bool isGradientChanged = false;
