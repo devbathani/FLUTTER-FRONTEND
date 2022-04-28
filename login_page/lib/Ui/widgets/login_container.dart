@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:types_of_login_pages/Ui/widgets/login_button.dart';
+import 'package:types_of_login_pages/Ui/widgets/password_textfield.dart';
+import 'package:types_of_login_pages/Ui/widgets/username_textfield.dart';
 
 class LoginContainer extends StatelessWidget {
-   LoginContainer({Key? key}) : super(key: key);
-final h = Get.height;
+  LoginContainer({Key? key}) : super(key: key);
+  final h = Get.height;
   final w = Get.width;
   @override
   Widget build(BuildContext context) {
@@ -45,113 +48,15 @@ final h = Get.height;
               SizedBox(
                 height: h * 0.06,
               ),
-              TextField(
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: w / 20,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                      horizontal: w * 0.01, vertical: h * 0.02),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey, width: 1),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(w / 50),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white, width: 1),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(w / 50),
-                    ),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.grey.shade200,
-                    size: w / 18,
-                  ),
-                  hintText: 'Username',
-                  hintStyle: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      color: Colors.grey.shade300,
-                      fontSize: w / 21,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
+              UsernameTextField(),
               SizedBox(
                 height: h * 0.02,
               ),
-              TextField(
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: w / 20,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                      horizontal: w * 0.01, vertical: h * 0.02),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey, width: 1),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(w / 50),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white, width: 1),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(w / 50),
-                    ),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.key,
-                    size: w / 18,
-                    color: Colors.grey.shade200,
-                  ),
-                  hintText: 'Password',
-                  hintStyle: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      color: Colors.grey.shade300,
-                      fontSize: w / 21,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
+              PasswordTextField(),
               SizedBox(
                 height: h * 0.10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: h * 0.06,
-                    width: w * 0.35,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(0.02 * w),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Login",
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: Colors.black54,
-                            fontSize: w / 21,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              LoginButton(),
             ],
           ),
         ),
