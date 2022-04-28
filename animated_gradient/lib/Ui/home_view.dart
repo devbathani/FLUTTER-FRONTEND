@@ -7,28 +7,28 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
+final List<Color> color1 = [
+  Colors.red,
+  Colors.orange,
+];
+final List<Color> color2 = [
+  Colors.blue,
+  Colors.green,
+];
+
+bool isGradientChange = false;
+
 class _HomeViewState extends State<HomeView> {
-  final List<Color> color1 = [
-    const Color(0xffA9C9FF),
-    const Color(0xffFFBBEC),
-  ];
-
-  final List<Color> color2 = [
-    const Color(0xff9FACE6),
-    const Color(0xff74EBD5),
-  ];
-
-  bool isGradientChanged = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedContainer(
-        duration: const Duration(seconds: 2),
         height: double.maxFinite,
         width: double.maxFinite,
+        duration: const Duration(seconds: 2),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: !isGradientChanged ? color1 : color2,
+            colors: !isGradientChange ? color1 : color2,
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -36,33 +36,30 @@ class _HomeViewState extends State<HomeView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    if (!isGradientChanged) {
-                      isGradientChanged = true;
-                    } else {
-                      isGradientChanged = false;
-                    }
-                  });
-                },
-                child: Container(
-                  width: 100,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "Change",
-                      style: TextStyle(
+            InkWell(
+              onTap: () {
+                setState(() {
+                  if (!isGradientChange) {
+                    isGradientChange = true;
+                  } else {
+                    isGradientChange = false;
+                  }
+                });
+              },
+              child: Container(
+                height: 50,
+                width: 110,
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Change",
+                    style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
