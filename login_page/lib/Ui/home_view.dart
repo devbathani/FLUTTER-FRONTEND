@@ -5,15 +5,8 @@ import 'package:get/get.dart';
 import 'package:types_of_login_pages/Ui/widgets/login_container.dart';
 import 'package:types_of_login_pages/Ui/widgets/welcome_flutter_frontend.dart';
 
-
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
-
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
+class HomeView extends StatelessWidget {
+  HomeView({Key? key}) : super(key: key);
   final h = Get.height;
   final w = Get.width;
   @override
