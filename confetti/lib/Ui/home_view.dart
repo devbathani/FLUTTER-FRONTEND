@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -60,8 +61,45 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            height: h * 0.08,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: w * 0.08),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "FLutter Frontend",
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: w / 22,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: h * 0.01,
+                ),
+                Text(
+                  "Hey there 👋",
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: w / 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 0.10 * h,
+                ),
+              ],
+            ),
+          ),
           ConfettiWidget(
             confettiController: _controllerCenter,
             emissionFrequency: 0.05,
@@ -83,6 +121,7 @@ class _HomeViewState extends State<HomeView> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
                 onTap: () {
