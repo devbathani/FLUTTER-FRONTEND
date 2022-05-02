@@ -61,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: h * 0.08,
@@ -95,29 +95,35 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 SizedBox(
-                  height: 0.10 * h,
+                  height: 0.35 * h,
                 ),
               ],
             ),
           ),
-          ConfettiWidget(
-            confettiController: _controllerCenter,
-            emissionFrequency: 0.05,
-            particleDrag: 0.05,
-            gravity: 0.2,
-            blastDirectionality: BlastDirectionality
-                .explosive, // don't specify a direction, blast randomly
-            shouldLoop:
-                false, // start again as soon as the animation is finished
-            colors: const [
-              Colors.red,
-              Colors.orange,
-              Colors.yellow,
-              Colors.green,
-              Colors.pink,
-              Colors.purple,
-            ], // manually specify the colors to be used
-            createParticlePath: drawStar, // define a custom shape/path.
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ConfettiWidget(
+                confettiController: _controllerCenter,
+                emissionFrequency: 0.05,
+                particleDrag: 0.02,
+                gravity: 0.2,
+                blastDirectionality: BlastDirectionality
+                    .explosive, // don't specify a direction, blast randomly
+                shouldLoop:
+                    false, // start again as soon as the animation is finished
+                colors: const [
+                  Colors.red,
+                  Colors.orange,
+                  Colors.yellow,
+                  Colors.green,
+                  Colors.pink,
+                  Colors.purple,
+                ], // manually specify the colors to be used
+                createParticlePath: drawStar, // define a custom shape/path.
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -128,21 +134,22 @@ class _HomeViewState extends State<HomeView> {
                   _controllerCenter.play();
                 },
                 child: Container(
-                  height: 40,
+                  height: 45,
                   width: 150,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.white.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: const Center(
-                      child: Text(
-                    "Celebrate",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                    child: Text(
+                      "Celebrate",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  )),
+                  ),
                 ),
               ),
             ],
