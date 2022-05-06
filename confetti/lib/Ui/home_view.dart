@@ -17,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
   final w = Get.width;
   late ConfettiController _controllerCenter;
 
-  @override
+  @override  
   void initState() {
     super.initState();
     _controllerCenter =
