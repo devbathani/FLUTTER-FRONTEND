@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildImage(Hit image) {
     var r = Random();
-    int h = 180 + r.nextInt(100);
+    int h = 180 + r.nextInt(200);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
       child: ClipRRect(
@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xffbdc3c7),
-              Color(0xff2c3e50),
+              Color(0xff004e92),
+              Color(0xff000428),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
