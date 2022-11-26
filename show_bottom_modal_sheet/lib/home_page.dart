@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
               height: 100,
             ),
             const Text(
-              "Show Model Bottom Sheet",
+              "Show Modal Bottom Sheet",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 25,
