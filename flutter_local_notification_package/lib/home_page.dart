@@ -1,7 +1,45 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
-class HomePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  @override
+  void initState() {
+    super.initState();
+    AndroidInitializationSettings androidInitializationSettings =
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    var initSetttings = InitializationSettings(
+      android: androidInitializationSettings,
+    );
+    flutterLocalNotificationsPlugin.initialize(
+      initSetttings,
+    );
+  }
+
+  sendNotification(String body) async {
+    var android = const AndroidNotificationDetails('id', 'channel ',
+        priority: Priority.high, importance: Importance.max);
+    var platform = NotificationDetails(
+      android: android,
+    );
+    await flutterLocalNotificationsPlugin
+        .show(0, 'Flutter Frontend', body, platform, payload: '')
+        .then((value) {
+      log("Notification received");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +61,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(
-              height: 100,
+              height: 200,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -47,7 +85,9 @@ class HomePage extends StatelessWidget {
               height: 200,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                sendNotification("Notification Received");
+              },
               child: Container(
                 height: 50,
                 width: 160,
