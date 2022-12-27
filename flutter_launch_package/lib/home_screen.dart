@@ -3,11 +3,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-  _launchWhatsapp() async {
-    var whatsAppNumber = "+919327375215";
-    var whatsAppUrl = "whatsapp://send?phone=$whatsAppNumber&text=hello";
-    await launchUrl(Uri.parse(whatsAppUrl));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +47,13 @@ class HomeScreen extends StatelessWidget {
               height: 200,
             ),
             InkWell(
-              onTap: () {
-                _launchWhatsapp();
+              onTap: () async {
+                var whatsAppNumber = "+918299580719";
+                var whatsAppUrl =
+                    "whatsapp://send?phone=$whatsAppNumber&text=Hello Aman";
+                await launchUrl(
+                  Uri.parse(whatsAppUrl),
+                );
               },
               child: Container(
                 height: 50,
