@@ -136,6 +136,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
+  otpless_flutter:
+    dependency: "direct main"
+    description:
+      name: otpless_flutter
+      sha256: "49db6548650f4d98e519d5c5fa0025e8f01529363689c6ef7f240a1b94698ba3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   path:
     dependency: transitive
     description:

@@ -1,12 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:otpless_flutter/otpless_flutter.dart';
 import 'package:otpless_login/home_screen.dart';
-import 'package:uni_links/uni_links.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,54 +13,42 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String launchWhatsAppUrl = '';
-  StreamSubscription? _sub;
+  final _otplessFlutterPlugin = Otpless();
 
-  Future<String> getLoginUrl() async {
-    final url = Uri.parse("https://api.otpless.com/api/v1/user/getSignupUrl");
-    final header = {
-      'clientid': 'OTPLess:YEOCWAWXQCYEDXLGHEREYGIAEPIVCOYF',
-      'clientsecret':
-          'Kf4y6dYW9u0dDGsGXY55b6Y7GqBe2cx1SL09n5BdvOVhWnhHeCZohPNNUGKTPq0ua'
-    };
-    final response = await http.get(url, headers: header);
-    launchWhatsAppUrl = jsonDecode(response.body)['url'];
-    log("WhatsApp launch url : $launchWhatsAppUrl");
-    return launchWhatsAppUrl;
+  // ** Function to initiate the login process
+  void initiateWhatsappLogin(String intentUrl) async {
+    var result =
+        await _otplessFlutterPlugin.loginUsingWhatsapp(intentUrl: intentUrl);
+    switch (result['code']) {
+      case "581":
+        log(result['message'].toString());
+        //TODO: handle whatsapp not found
+        break;
+      default:
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    initializeUrl();
+    initPlatformState();
   }
 
-  @override
-  void dispose() {
-    _sub!.cancel();
-    super.dispose();
-  }
-
-  initializeUrl() {
-    _sub = uriLinkStream.listen(
-      (Uri? uri) {
-        if (uri!.path == '/whatsapp/login') {
-          String? token = uri.queryParameters['token'];
-          if (token != null) {
-            log("Token: $token");
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const HomeScreen(),
-              ),
-            );
-          }
-        }
-      },
-      onError: (err) {
-        log(err);
-      },
-    );
+  // ** Function that is called when page is loaded
+  // ** We can check the auth state in this function
+  Future<void> initPlatformState() async {
+    _otplessFlutterPlugin.authStream.listen((token) {
+      // TODO: Handle user token like storing in SharedPreferences or navigation
+      log(token.toString());
+      if (token != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const HomeScreen(),
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -100,8 +85,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             InkWell(
               onTap: () async {
-                final url = await getLoginUrl();
-                launchUrlString(url);
+                initiateWhatsappLogin(
+                  "https://otpless.authlink.me?redirectUri=otpless://dev",
+                );
               },
               child: Container(
                 height: 50,

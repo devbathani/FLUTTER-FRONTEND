@@ -37,9 +37,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="hypervisor"
-                    android:host="otpless"
-                    android:path="/whatsapp/login" />
+                    android:scheme="otpless"
+                    android:host="dev"
+                />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
