@@ -38,7 +38,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:scheme="otpless"
-                    android:host="dev"
+                    android:host="gauge"
                 />
             </intent-filter>
         </activity>

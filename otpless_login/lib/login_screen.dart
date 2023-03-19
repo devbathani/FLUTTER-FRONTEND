@@ -1,9 +1,8 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:otpless_flutter/otpless_flutter.dart';
-import 'package:otpless_login/home_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
         await _otplessFlutterPlugin.loginUsingWhatsapp(intentUrl: intentUrl);
     switch (result['code']) {
       case "581":
-        log(result['message'].toString());
+        print(result['message']);
         //TODO: handle whatsapp not found
         break;
       default:
@@ -40,76 +39,46 @@ class _LoginScreenState extends State<LoginScreen> {
     _otplessFlutterPlugin.authStream.listen((token) {
       // TODO: Handle user token like storing in SharedPreferences or navigation
       log(token.toString());
-      if (token != null) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => const HomeScreen(),
-          ),
-        );
-      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xff73c8a9),
-              Color(0xffffffff),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 200,
-            ),
-            const Text(
-              "Login via WhatsApp",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
-            ),
-            const SizedBox(
-              height: 300,
-            ),
-            InkWell(
-              onTap: () async {
-                initiateWhatsappLogin(
-                  "https://otpless.authlink.me?redirectUri=otpless://dev",
-                );
-              },
-              child: Container(
-                height: 50,
-                width: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff73c8a9),
-                ),
-                child: const Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+      backgroundColor: Colors.white,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  initiateWhatsappLogin(
+                      "https://gauge.authlink.me?redirectUri=otpless://gauge");
+                },
+                child: Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Login via WhatsApp",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
