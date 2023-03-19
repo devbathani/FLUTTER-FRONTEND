@@ -1,8 +1,15 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  DateTime selectedValue = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +50,36 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 200,
+              height: 100,
             ),
-            
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: DatePicker(
+                DateTime.now(),
+                initialSelectedDate: DateTime.now(),
+                selectionColor: Colors.black,
+                selectedTextColor: Colors.white,
+                onDateChange: (date) {
+                  // New date selected
+                  setState(() {
+                    selectedValue = date;
+                  });
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Center(
+              child: Text(
+                selectedValue.day.toString(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ],
         ),
       ),
