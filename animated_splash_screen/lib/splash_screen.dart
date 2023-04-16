@@ -11,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _scaleController = AnimationController(
-    duration: const Duration(seconds: 2),
+    duration: const Duration(seconds: 3),
     vsync: this,
   )..repeat(reverse: true);
   late final Animation<double> _scaleAnimation = CurvedAnimation(
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   navigateToHomeScreen() async {
-    await Future.delayed(const Duration(seconds: 2), () {});
+    await Future.delayed(const Duration(seconds: 3), () {});
     if (mounted) {
       Navigator.push(
         context,
