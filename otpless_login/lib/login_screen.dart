@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:otpless_flutter/otpless_flutter.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -12,34 +11,29 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // create a variable for otpless plugin by copy paste in your page
   final _otplessFlutterPlugin = Otpless();
-
-  // ** Function to initiate the login process
-  void initiateWhatsappLogin(String intentUrl) async {
-    var result =
-        await _otplessFlutterPlugin.loginUsingWhatsapp(intentUrl: intentUrl);
-    switch (result['code']) {
-      case "581":
-        print(result['message']);
-        //TODO: handle whatsapp not found
-        break;
-      default:
-    }
+// copy paste and call the below mentioned function to show otpless
+// in your page
+  String message = "";
+  Future<void> startOtpless() async {
+    _otplessFlutterPlugin.start((result) {
+      if (result['data'] != null) {
+        final token = result['data']['token'];
+        message = "token: $token";
+        log(message);
+        _otplessFlutterPlugin.signInCompleted();
+      }
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // ** Function that is called when page is loaded
-  // ** We can check the auth state in this function
-  Future<void> initPlatformState() async {
-    _otplessFlutterPlugin.authStream.listen((token) {
-      // TODO: Handle user token like storing in SharedPreferences or navigation
-      log(token.toString());
-    });
+    //use this to remove floating Sign in button from OTPLESS
+    _otplessFlutterPlugin.hideFabButton();
+// use this to check whatsapp present in the user device
+    _otplessFlutterPlugin.isWhatsAppInstalled();
   }
 
   @override
@@ -54,8 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               InkWell(
                 onTap: () {
-                  initiateWhatsappLogin(
-                      "https://gauge.authlink.me?redirectUri=otpless://gauge");
+                  startOtpless();
                 },
                 child: Container(
                   height: 50,
