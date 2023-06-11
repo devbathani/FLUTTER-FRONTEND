@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:fetch_api_demo/user_data_entity.dart';
 import 'package:flutter/material.dart';
@@ -19,15 +20,15 @@ class _HomeScreenState extends State<HomeScreen> {
     final response =
         await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
     if (response.statusCode == 200) {
-      print("Fetched");
       setState(() {
         userDataEntity = (jsonDecode(response.body) as List)
             .map((e) => UserDataEntity.fromJson(e))
             .toList();
+        log("Fetched");
         isLoading = false;
       });
     } else {
-      print("Something went wrong");
+      log("Something went wrong");
     }
   }
 
