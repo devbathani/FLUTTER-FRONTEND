@@ -38,7 +38,7 @@ dependencies:
   http: ^0.13.5
   uni_links: ^0.5.1
   url_launcher: ^6.1.7
-  otpless_flutter: 1.0.8
+  otpless_flutter: ^1.1.2
 
 
 dev_dependencies:
