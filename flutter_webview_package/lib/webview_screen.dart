@@ -6,8 +6,7 @@ class WebViewScreen extends StatelessWidget {
 
   final controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
-    ..loadRequest(
-        Uri.parse('https://otpless.com/cid/HRIRBIIKXMKEOTDDA8VV4HP2V24454X8'));
+    ..loadRequest(Uri.parse('https://github.com/devbathani/FLUTTER-FRONTEND'));
 
   @override
   Widget build(BuildContext context) {

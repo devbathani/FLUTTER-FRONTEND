@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_package/timer_screen.dart';
+import 'package:flutter_webview_package/home_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: TimerScreen(),
+      home: HomeScreen(),
     );
   }
 }
