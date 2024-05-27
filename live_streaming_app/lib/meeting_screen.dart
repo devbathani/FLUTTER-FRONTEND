@@ -34,13 +34,10 @@ class _ILSScreenState extends State<ILSScreen> {
       defaultCameraIndex: 1,
       mode: widget.mode,
     );
-
     // setting the event listener for join and leave events
     setMeetingEventListener();
-
     // Joining room
     _room.join();
-
     super.initState();
   }
 
